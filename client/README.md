@@ -295,3 +295,12 @@ For more information on AngularJS please check out http://angularjs.org/
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
+
+
+Caro Alessandro,
+
+l'esame consiste nella realizzazione di una Web Application. Dovresti gestire sia il front-end che il back-end. Le tecnologie raccomandata sono HTML5, JQuery, Angukar e un DBMS a tua scelta. Sarebbe bello inoltre usare un CSS responsive quale Twitter Bootstrap.
+
+Ciao,
+
+P
