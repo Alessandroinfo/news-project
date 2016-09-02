@@ -7,9 +7,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var http = require('http');
 var fs = require('fs');
-var gutil = require('gulp-util');
-
-var AdminModel = require('./db/adminModel');
 
 var app = express();
 
@@ -42,8 +39,8 @@ var connection = mongoose.connection;
 connection.on('error', function () {
     logger.error(msg.DB.CONNECTION_FAIL);
     logger.error.bind(logger, 'connection error:');
-    //res.json({error: msg.DB.CONNECTION_FAIL});
 });
+
 connection.once('open', function () {
     logger.info(msg.DB.CONNECTION_OK);
 

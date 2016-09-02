@@ -1,0 +1,21 @@
+{
+  "DB": {
+    "CONNECTION_OK": "DATABASE: Connection success!!",
+    "CONNECTION_FAIL": "DATABASE: Connection failed!!"
+  },
+  "AUTH_FAIL": "Mail e/o password errate",
+  "AUTH_NOT_CONFIRMED": "Utente non confermato",
+  "API_MESS": {
+    "ERROR_READ_FILE": "Error on read file",
+    "ERROR_NO_CSV": "File with .csv extension needed",
+    "ERROR_READ_CSV": "Error on read csv",
+    "ERROR_READ_CSV_SPEAKERS": "ATTENTION! The format of .csv file is not correct for the SPEAKERS import",
+    "ERROR_READ_CSV_EVENTS": "ATTENTION! The format of .csv file is not correct for the EVENTS import",
+    "ERROR_READ_CSV_DOCTORS": "ATTENTION! The format of .csv file is not correct for the DOCTORS import",
+    "ERROR_READ_DB_ITEMS": "Error on read items in database",
+    "ERROR_COMPOSITION_CSV": "Error on composition .csv file",
+    "ERROR_WRITE_CSV": "Error on write .csv file",
+    "ERROR_DOWNLOAD_CSV": "Error on download .csv file",
+    "PROCESSED_FILES": "All files have been processed successfully"
+  }
+}
