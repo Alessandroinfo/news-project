@@ -5,8 +5,6 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var http = require('http');
-var fs = require('fs');
 
 var app = express();
 
@@ -19,16 +17,11 @@ var logger = require('./config/Logger');
 
 //************************************************************************************************
 
-
 app.get("/ciao", function (req, res, next) {
 
 }, function (req, res) {
 
     req.body;
-});
-
-app.post("/ciao", function (req, res) {
-
 });
 
 // CONNECTION TO DB
