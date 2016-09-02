@@ -17,12 +17,10 @@ var logger = require('./config/Logger');
 
 //************************************************************************************************
 
-app.get("/ciao", function (req, res, next) {
-
-}, function (req, res) {
-
-    req.body;
-});
+/* Prova
+ app.get("/ciao", function (req, res) {
+ res.send("ciao");
+ });*/
 
 // CONNECTION TO DB
 mongoose.connect('mongodb://' + config.MONGO_URI + ':' + config.MONGO_PORT + '/' + config.MONGO_DB);
