@@ -1,4 +1,4 @@
-server/node_modules/
+node_modules/
 .idea/workspace.xml
 server/node_modules/.bin/
 server/node_modules/accepts/
