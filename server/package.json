@@ -1,0 +1,14 @@
+{
+  "name": "NewsProject",
+  "private": false,
+  "version": "0.0.1",
+  "description": "NewsProject",
+  "repository": "https://github.com/Alessandroinfo/NewsProject",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+  }
+}
