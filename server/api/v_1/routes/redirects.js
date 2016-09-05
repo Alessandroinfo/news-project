@@ -11,4 +11,8 @@ router.use('/home', function (req, res) {
     res.redirect(config.REDIRECT_ROUTES.home);
 });
 
+router.use('/admin', function (req, res) {
+    res.redirect(config.REDIRECT_ROUTES.admin);
+});
+
 module.exports = router;
