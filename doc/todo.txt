@@ -1,0 +1,8 @@
+elenco notizie
+elenco notizie per categoria
+elenco notizie ultime notizie
+elenco notizie popolari
+salva articolo
+login admin
+torna articolo intero per id
+modifica articolo

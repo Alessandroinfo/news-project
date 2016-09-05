@@ -67,7 +67,7 @@ npm start
 
 Caro Alessandro,
 
-l'esame consiste nella realizzazione di una Web Application. Dovresti gestire sia il front-end che il back-end. Le tecnologie raccomandata sono HTML5, JQuery, Angukar e un DBMS a tua scelta. Sarebbe bello inoltre usare un CSS responsive quale Twitter Bootstrap.
+l'esame consiste nella realizzazione di una Web Application. Dovresti gestire sia il front-end che il back-end. Le tecnologie raccomandata sono HTML5, JQuery, Angular e un DBMS a tua scelta. Sarebbe bello inoltre usare un CSS responsive quale Twitter Bootstrap.
 
 Ciao,
 

@@ -47,6 +47,35 @@ router.post('/createArticle', function (req, res) {
 
 });
 
+//API per la visualizzazione degli aticoli
+router.get('/showArticles', function (req, res) {
+
+    ArticlesModel.find(   //Effettuo una ricerca sul db, ritorna una collezione di Models
+        //{title: "Titolo"}
+    ).exec(function (err, arrayModel) {  //E' possibile mettere ulteriori funzioni in cascata, in questo caso si esegue exec per eseguire la query
+        //console.log(arrayModel);
+        res.json({success: true, payloads: arrayModel, count: arrayModel.length});
+    });
+
+
+});
+
+
+//API per la cancellazione degli aticoli
+router.post('/deleteArticles', function (req, res) {
+
+    ArticlesModel.remove({
+        _id: {$in: req.body.ids}
+    }, function (err, resDelete) {
+        if (err)
+            res.send(err);
+
+        res.json({success: true, payloads: resDelete.result});
+    });
+
+
+});
+
 
 // get all todos
 router.get('/todos', function (req, res) {

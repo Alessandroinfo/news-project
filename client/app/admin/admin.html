@@ -1,1 +1,9 @@
-<div>admin</div>
+<button ng-click="admin.showArticles()">admin</button>
+
+<button ng-click="admin.deleteArticles()">delete</button>
+
+<div>{{admin.articles}}</div>
+
+<div ng-repeat="article in admin.articles">
+    <div ng-click="admin.toggleArticle(article._id)">{{article.title}}</div>
+</div>

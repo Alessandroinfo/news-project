@@ -7,6 +7,7 @@ angular.module('newsApp', [   //Nome modulo principale applicazione
     'ngRoute',
     'ui.bootstrap',
     'newsApp.home',
+    'newsApp.admin',
     'newsApp.view2'
 ]).config(config);  //Funzione di configurazione
 
