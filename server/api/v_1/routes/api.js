@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ArticlesModel = require("./db/ArticlesModel");  //Importo il modello della collection
+var ArticlesModel = require("../../../db/ArticlesModel");  //Importo il modello della collection
 
 /*//TEST API
 router.get('/', function (req, res, next) {
@@ -37,11 +37,13 @@ router.post('/createArticle', function (req, res) {
         console.log("Scrittura avvenuta con successo");
 
         ArticlesModel.find(   //Effettuo una ricerca sul db, ritorna una collezione di Models
-            {title: "Titolo"}
+            //{title: "Titolo"}
         ).exec(function (err, arrayModel) {  //E' possibile mettere ulteriori funzioni in cascata, in questo caso si esegue exec per eseguire la query
-            console.log(arrayModel);
+            //console.log(arrayModel);
+            res.json({success: true, payloads: arrayModel});
         });
     });
+
 
 });
 
@@ -98,7 +100,5 @@ router.delete('/todos/:todo_id', function (req, res) {
     });
 });
 //  -------------------------        ARTICOLI       -------------------------
-
-
 
 module.exports = router;

@@ -1,14 +1,6 @@
 'use strict';
 
-angular.module('newsApp.view2', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
-    templateUrl: '../app/view2/view2.html',
-    controller: 'View2Ctrl'
-  });
-}])
-
+angular.module('newsApp.view2', [])
 .controller('View2Ctrl', [function() {
 
 }]);
