@@ -5,5 +5,5 @@
 //Qui dichiaro il modulo home
 
 (function () {
-    angular.module('newsApp.home', []);
+    angular.module('newsApp.home', []);  //Dichiaro il modulo home, qui verrebbero specificate le dipendenze dei moduli esterni
 }());

@@ -17,7 +17,7 @@
 
         // Funzione per creare gli articoli
         function createArticle(article) {
-            return $http.post('/api/createArticle', article);  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
+            return $http.post('/api/article/createArticle', article);  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
         };
 
     };
