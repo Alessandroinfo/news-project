@@ -3,9 +3,9 @@ var router = express.Router();
 var ArticlesModel = require("../../../db/ArticlesModel");  //Importo il modello della collection
 
 /*//TEST API
-router.get('/', function (req, res, next) {
-    var route = req.baseUrl + req.path;
-    res.send({success: true, route: route});
+ router.get('/', function (req, res, next) {
+ var route = req.baseUrl + req.path;
+ res.send({success: true, route: route});
  });*/
 
 // API ---------------------------------------------------------------------
@@ -15,18 +15,10 @@ router.get('/', function (req, res, next) {
 //API per la creazione di un articolo
 router.post('/createArticle', function (req, res) {
 
-    var articolo = new ArticlesModel(  //Creo il modello popolandolo con i dati
-        {
-            title: "Titolo",
-            category: "Categoria",
-            body: "Corpo",
-            imageUrl: "Url immagine"
-        }
-    );
 
-    /*    var articolo = new ArticlesModel(  //Creo il modello popolandolo con i dati
-     req.body
-     );*/
+    var articolo = new ArticlesModel(  //Creo il modello popolandolo con i dati
+        req.body
+    );
 
     articolo.save(function (err, article) {  //Salvo il modello nel db
         if (err) {
@@ -34,13 +26,13 @@ router.post('/createArticle', function (req, res) {
             return err;
         }
 
-        console.log("Scrittura avvenuta con successo");
+        console.log("Scrittura articolo " + article + " avvenuta con successo");
 
         ArticlesModel.find(   //Effettuo una ricerca sul db, ritorna una collezione di Models
             //{title: "Titolo"}
         ).exec(function (err, arrayModel) {  //E' possibile mettere ulteriori funzioni in cascata, in questo caso si esegue exec per eseguire la query
             //console.log(arrayModel);
-            res.json({success: true, payloads: arrayModel});
+            res.json({success: true, payloads: arrayModel, article: article});
         });
     });
 
@@ -63,6 +55,7 @@ router.get('/showArticles', function (req, res) {
 
 //API per la cancellazione degli aticoli
 router.post('/deleteArticles', function (req, res) {
+
 
     ArticlesModel.remove({
         _id: {$in: req.body.ids}

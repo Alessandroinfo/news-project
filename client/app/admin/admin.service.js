@@ -18,9 +18,10 @@
             self.showArticles = showArticles;
             self.deleteArticles = deleteArticles;
             self.saveArticle = saveArticle;
+            self.createArticle = createArticle;
 
 
-            // Funzione per creare gli articoli
+            // Funzione per visualizzare gli articoli
             function showArticles() {
                 return $http.get('/api/article/showArticles');  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
             };
@@ -33,6 +34,11 @@
             // Funzione per modificare un articolo
             function saveArticle(editedArticle) {
                 return $http.post('/api/article/editArticle', editedArticle);  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
+            };
+
+            // Funzione per crare un articolo
+            function createArticle(article) {
+                return $http.post('/api/article/createArticle', article);  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
             };
 
 

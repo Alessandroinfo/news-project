@@ -17,14 +17,22 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="vertical-pad break-center">
+                        <div ng-if="admin.editing" class="back">
 
+                            <button ng-click="admin.backToArticles()" type="button" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            </button>
+
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="right vertical-pad break-center">
 
-                        <button ng-if="!admin.editing" type="button" class="btn btn-primary">Aggiungi</button>
+                        <button ng-if="!admin.editing" ng-click="admin.createArticle()" type="button"
+                                class="btn btn-primary">Aggiungi
+                        </button>
                         <button ng-if="!admin.editing" ng-click="admin.editArticle()" type="button"
                                 ng-class="{'disabled': !admin.editIsDisables}" class="btn btn-primary">Modifica
                         </button>
@@ -69,14 +77,15 @@
     </div>
     <!-- ARTICLES -->
 
-    <!-- EDIT ARTICLE -->
+    <!-- EDIT CREATE ARTICLE -->
     <div ng-if="admin.editing" class="container-articles">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="row row-centered">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-centered">
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">Modifica articolo</div>
+                        <div ng-if="!admin.create" class="panel-heading">Modifica articolo</div>
+                        <div ng-if="admin.create" class="panel-heading">Aggiungi articolo</div>
                         <div class="panel-body">
 
                             <div class="form-group">
@@ -84,9 +93,14 @@
                                 <input ng-model="admin.articleOnEditing.title" type="text" class="form-control"
                                        id="title">
                             </div>
-                            {{admin.articleOnEditing}}
-                            ____________
-                            {{admin.articles}}
+                            <div class="form-group">
+                                <label for="category">Categoria:</label>
+                                <select class="form-control" id="category">
+                                    <option ng-repeat="category in admin.category" ng-value="category.name">
+                                        {{category.name}}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,6 +127,10 @@
 
     <div ng-click="admin.fadeOut()" ng-class="{'message-fade': admin.openEditMsg}" class="message-box">
         Modifica effettuata!
+    </div>
+
+    <div ng-click="admin.fadeOut()" ng-class="{'message-fade': admin.openCreatedtMsg}" class="message-box">
+        Articolo creato!
     </div>
 </div>
 <!-- MESSAGES -->

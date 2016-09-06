@@ -23,8 +23,11 @@
         vm.openDeleteMsg = false;
         vm.openErrorAccessMsg = false;
         vm.openEditMsg = false;
+        vm.openCreatedtMsg = false;
         vm.editing = false;
         vm.articleOnEditing;
+        vm.create = false;
+        vm.category = category;
 
         // FUNZIONI
         vm.showArticles = showArticles;
@@ -36,17 +39,17 @@
         vm.toggleEdit = toggleEdit;
         vm.editArticle = editArticle;
         vm.saveArticle = saveArticle;
-
+        vm.createArticle = createArticle;
+        vm.backToArticles = backToArticles;
+        vm.deselectAll = deselectAll;
 
         // Funzione per visualizzare gli articoli su admin
         function showArticles() {
 
             adminSvc.showArticles().success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
                     vm.articles = data.payloads;
-                    for (var key in vm.articles) {
-                        vm.articles[key].selected = false;
-                    }
-                    ;
+
+                    vm.deselectAll();
                     vm.toggleEdit();
                     console.log("Articoli:", vm.articles);
                 })
@@ -54,6 +57,12 @@
                     console.log('Error: ' + err);
                 });
 
+        }
+
+        // Funzione per la creazione degli articoli
+        function createArticle() {
+            vm.editing = true;
+            vm.create = true;
         }
 
         // Funzione per eliminare una o più notizie
@@ -69,11 +78,14 @@
             ;
 
 
-            adminSvc.deleteArticles({"ids": array}).success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
+            adminSvc.deleteArticles({"ids": array})
+                .success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
                     console.log("Cancellazione effettuata", data);
                     if (data.payloads.n > 0) {
-                        vm.openDeleteMsg = true;
                         vm.showArticles();
+                        vm.openCreatedtMsg = false;
+                        vm.openDeleteMsg = true;
+                        vm.backToArticles();
                     }
                 })
                 .error(function (err) {
@@ -107,6 +119,7 @@
                             console.log("Login effettuato", data);
                             // Visualizzo gli articoli
                             vm.showArticles();
+                            vm.openErrorAccessMsg = false;
                         } else {
                             vm.openErrorAccessMsg = true;
                         }
@@ -129,6 +142,7 @@
             vm.openDeleteMsg = false;
             vm.openErrorAccessMsg = false;
             vm.openEditMsg = false;
+            vm.openCreatedtMsg = false;
         }
 
         // Funzione disabilita pulsante modifica per più articoli
@@ -169,20 +183,56 @@
 
         // Funzione salvataggio modifiche articolo
         function saveArticle() {
+            if (vm.create) {
+                adminSvc.createArticle(vm.articleOnEditing)
+                    .success(function (data) {
+                        vm.openCreatedtMsg = true;
+                        console.log('Articolo creato con successo: ', data.article);
+                        vm.articles.push(data.article)
 
-            adminSvc.saveArticle(vm.articleOnEditing)
-                .success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
-                    console.log("Modifica effettuata", data);
-                    if (data.n > 0) {
-                        vm.openEditMsg = true;
-                        vm.showArticles();
-                    }
-                })
-                .error(function (err) {
-                    console.log('Error: ' + err.message);
+                        for (var key in vm.articles) {
+                            if (vm.articles[key]._id == data.article._id) {
+                                vm.articles[key].selected = true;
+                            }
+                        }
+                        ;
+
+
+                    }).error(function (err) {
+                    console.log('Error: ' + err);
                 });
+            } else {
+                adminSvc.saveArticle(vm.articleOnEditing)
+                    .success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
+                        console.log("Modifica effettuata", data);
+                        if (data.n > 0) {
+                            vm.openEditMsg = true;
+                            vm.showArticles();
+                            vm.backToArticles();
+                        }
+                    })
+                    .error(function (err) {
+                        console.log('Error: ' + err.message);
+                    });
+            }
 
 
+        }
+
+        // Funzione per tornare alla lista degli articoli
+        function backToArticles() {
+            vm.editing = false;
+            vm.create = false;
+            vm.articleOnEditing = {};
+            vm.deselectAll();
+        }
+
+        // Funzione deseleziona tutto
+        function deselectAll() {
+            for (var key in vm.articles) {
+                vm.articles[key].selected = false;
+            }
+            ;
         }
 
 
