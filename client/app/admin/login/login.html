@@ -1,0 +1,23 @@
+<!-- LOGIN se si è autenticati -->
+<div ng-if="!admin.globalData.isAuthenticated">
+    <!-- card-container -->
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="../../app/resources/img/avatar_2x.png"/>
+
+        <p id="profile-name" class="profile-name-card"></p>
+        <!-- form -->
+        <form class="form-signin">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" id="inputEmail" class="form-control" ng-model="admin.username" placeholder="Email"
+                   required autofocus>
+            <input type="password" id="inputPassword" class="form-control" ng-model="admin.password"
+                   placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" ng-click="admin.tryLogin()" type="submit">
+                Login
+            </button>
+        </form>
+        <!-- /form -->
+    </div>
+    <!-- /card-container -->
+</div>
+<!-- LOGIN -->

@@ -1,9 +1,118 @@
-<button ng-click="admin.showArticles()">admin</button>
+<!-- LOGIN -->
+<div ng-include="'app/admin/login/login.html'"></div>
+<!-- LOGIN -->
 
-<button ng-click="admin.deleteArticles()">delete</button>
+<!-- ADMIN -->
+<div ng-if="admin.globalData.isAuthenticated">
+    <!-- MENU HEADER -->
+    <div ng-include="'app/menu/back.end.menu.html'"></div>
+    <!-- MENU HEADER -->
 
-<div>{{admin.articles}}</div>
+    <!-- MANAGE -->
+    <div class="col-lg-12 col-md-12 col-sm-12">
 
-<div ng-repeat="article in admin.articles">
-    <div ng-click="admin.toggleArticle(article._id)">{{article.title}}</div>
+        <div class="row">
+
+            <div class="sub-header">
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="vertical-pad break-center">
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="right vertical-pad break-center">
+
+                        <button ng-if="!admin.editing" type="button" class="btn btn-primary">Aggiungi</button>
+                        <button ng-if="!admin.editing" ng-click="admin.editArticle()" type="button"
+                                ng-class="{'disabled': !admin.editIsDisables}" class="btn btn-primary">Modifica
+                        </button>
+                        <button ng-if="admin.editing" ng-click="admin.saveArticle()" type="button"
+                                class="btn btn-success">Salva
+                        </button>
+                        <button ng-click="admin.deleteArticles()" type="button" class="btn btn-danger">Elimina</button>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- MANAGE -->
+
+    <!-- ARTICLES -->
+    <div ng-if="!admin.editing" class="container-articles">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+
+                <div ng-repeat="article in admin.articles" class="col-lg-2 col-md-2 col-sm-2">
+                    <div ng-click="admin.toggleArticle(article._id)" class="card-small card-container-small card-touch">
+                        <div class="card-image">
+                            <img src="../../app/resources/img/avatar_2x.png" alt="{{article.imageUrl}}"/>
+
+                            <div class="tag-category">{{article.category}}</div>
+                        </div>
+
+                        <div class="title-article">{{article.title}}</div>
+
+                        <div ng-if="article.selected" class="card-check"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- ARTICLES -->
+
+    <!-- EDIT ARTICLE -->
+    <div ng-if="admin.editing" class="container-articles">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row row-centered">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-centered">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Modifica articolo</div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label for="title">Titolo:</label>
+                                <input ng-model="admin.articleOnEditing.title" type="text" class="form-control"
+                                       id="title">
+                            </div>
+                            {{admin.articleOnEditing}}
+                            ____________
+                            {{admin.articles}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- EDIT ARTICLE -->
+
+
 </div>
+<!-- ADMIN -->
+
+<!-- MESSAGES -->
+<div class="messages">
+    <div ng-click="admin.fadeOut()" ng-class="{'message-fade': admin.openDeleteMsg}" class="message-box">
+        Cancellazione effettuata!
+    </div>
+
+    <div ng-click="admin.fadeOut()" ng-class="{'message-fade': admin.openErrorAccessMsg}" class="message-box">
+        Dati errati!
+    </div>
+
+    <div ng-click="admin.fadeOut()" ng-class="{'message-fade': admin.openEditMsg}" class="message-box">
+        Modifica effettuata!
+    </div>
+</div>
+<!-- MESSAGES -->

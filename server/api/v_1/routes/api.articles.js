@@ -67,67 +67,45 @@ router.post('/deleteArticles', function (req, res) {
     ArticlesModel.remove({
         _id: {$in: req.body.ids}
     }, function (err, resDelete) {
-        if (err)
-            res.send(err);
+        if (err) {
+            res.send(err)
+        }
+        ;
 
         res.json({success: true, payloads: resDelete.result});
     });
 
-
 });
 
 
-// get all todos
-router.get('/todos', function (req, res) {
+//API per la modifica dell'articolo
+router.post('/editArticle', function (req, res) {
 
-    // use mongoose to get all todos in the database
-    Todo.find(function (err, todos) {
+    ArticlesModel.findById(req.body._id, function (error, articleUpdated) {
+        // Gestisco l'errore col middleware di Express
+        if (error) return next(error);
 
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err)
-            res.send(err)
+        // Errore in caso non viene trovato
+        if (!articleUpdated) {
+            return res.status(404).json({
+                message: 'Articolo con id ' + req.body._id + ' non è stato trovato.'
+            });
+        }
 
-        res.json(todos); // return all todos in JSON format
-    });
-});
+        // Elimino l'id per non far generare errore di update
+        delete req.body._id;
+        delete req.body.selected;
+        // Update del modello
+        articleUpdated.update(req.body, function (error, articleUpdated) {
+            if (error) return next(error);
 
-// create todo and send back all todos after creation
-router.post('/todos', function (req, res) {
-
-    // create a todo, information comes from AJAX request from Angular
-    Todo.create({
-        text: req.body.text,
-        done: false
-    }, function (err, todo) {
-        if (err)
-            res.send(err);
-
-        // get and return all the todos after you create another
-        Todo.find(function (err, todos) {
-            if (err)
-                res.send(err)
-            res.json(todos);
+            res.json(articleUpdated);
         });
     });
 
 });
 
-// delete a todo
-router.delete('/todos/:todo_id', function (req, res) {
-    Todo.remove({
-        _id: req.params.todo_id
-    }, function (err, todo) {
-        if (err)
-            res.send(err);
 
-        // get and return all the todos after you create another
-        Todo.find(function (err, todos) {
-            if (err)
-                res.send(err)
-            res.json(todos);
-        });
-    });
-});
 //  -------------------------        ARTICOLI       -------------------------
 
 module.exports = router;

@@ -8,7 +8,8 @@ angular.module('newsApp', [   //Nome modulo principale applicazione
     'ui.bootstrap',
     'newsApp.home',
     'newsApp.admin',
-    'newsApp.view2'
+    'newsApp.global.service'
+
 ]).config(config);  //Funzione di configurazione
 
 
@@ -21,11 +22,6 @@ function config($routeProvider) {  //Funzione di configurazione dell'applicazion
             templateUrl: 'app/admin/admin.html', //Template html per la rotta associata
             controller: 'adminCtrl',  //Nome controller
             controllerAs: 'admin'  //Utilizzato per non utilizzare lo $scope e gestire i controller in modo mnemonico
-        })
-        .when('/view2', {
-            templateUrl: 'app/view2/view2.html',
-            controller: 'view2Ctrl',
-            controllerAs: 'view2'
         })
         .when("/", {
             templateUrl: 'app/home/home.html',

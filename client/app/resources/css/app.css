@@ -1,30 +1,371 @@
-/* app css stylesheet */
+/******************************************************/
+/*****************CSS NEWS PROJECT ********************/
+/******************************************************/
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+/*************************ALIGN************************/
+.right {
+  text-align: right;
 }
 
-.menu:before {
-  content: "[";
+@media (max-width: 768px) {
+
+  .break-center {
+    text-align: center !important;
+  }
+
 }
 
-.menu:after {
-  content: "]";
+.vertical-pad {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
-.menu > li {
-  display: inline;
+.row-centered {
+  text-align: center;
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+.col-centered {
+  display: inline-block;
+  float: none;
+  /* resetto il text-align */
+  text-align: left;
+  /* sistemo lo spazio dell'inline-block */
+  margin-right: -4px;
 }
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+/*************************ALIGN************************/
+
+/*************************UI ELEMENTS************************/
+
+a {
+  cursor: pointer;
 }
+
+.sub-header {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 13px;
+  background-color: #e1e1e1;
+  float: left;
+  width: 100%;
+}
+
+.tag-category {
+  height: 20px;
+  background-color: #f04903;
+  margin-top: 159px;
+  margin-left: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+  z-index: 2222;
+  color: #fff;
+  position: absolute;
+}
+
+/*
+ * Componente Card
+ */
+.card-container.card {
+  max-width: 350px;
+  padding: 40px 40px;
+}
+
+.card-container-small.card-small {
+  display: inline-block;
+  width: 100%;
+}
+
+.card-small.card-container-small:focus, .card-small.card-container-small:active {
+  outline: none;
+}
+
+.card {
+  background-color: #F7F7F7;
+  /* in caso di nessun contenuto*/
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  /* shadows e bordi rounded */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-small {
+  background-color: #F7F7F7;
+  /* in caso di nessun contenuto*/
+  margin: 10px 0px 0px 0px;
+  /* shadows e bordi rounded */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-touch {
+  cursor: pointer;
+}
+
+.card-image {
+  display: -webkit-flex;
+  /*noinspection CssInvalidPropertyValue*/
+  display: -moz-flex;
+  display: flex;
+}
+
+.card-image img {
+  width: 100%;
+  height: 190px;
+
+  object-fit: cover;
+
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.card-check {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  z-index: 9999;
+  width: 55px;
+  background-color: #f04903;
+  height: 55px;
+  content: '2';
+  border-radius: 30px;
+
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-check:after {
+  position: absolute;
+  content: "✓";
+  color: #fff;
+  font-size: 30px;
+  left: 16px;
+  top: 7px;
+  height: 25px;
+  font-weight: bold;
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+/*
+ * Componente Card
+ */
+
+/*************************UI ELEMENTS************************/
+
+/*************************MENU************************/
+.navbar-default {
+  background-color: #F04903;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #d40022;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  border: 0px;
+}
+
+/*************************MENU************************/
+
+/*************************BUTTONS************************/
+
+.btn {
+  font-weight: 700;
+  height: 36px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.btn.btn-signin {
+  cursor: pointer;
+  background-color: #F04903;
+  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  padding: 0px;
+  font-weight: 700;
+  font-size: 20px;
+  height: 45px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  -o-transition: all 0.218s;
+  -moz-transition: all 0.218s;
+  -webkit-transition: all 0.218s;
+  transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+  background-color: #d40022;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+  outline: 0px;
+}
+
+/*************************BUTTONS************************/
+
+/*************************FORMS************************/
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: #e1e1e1 !important;
+}
+
+.profile-name-card {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0 0;
+  min-height: 1em;
+}
+
+.reauth-email {
+  display: block;
+  color: #404040;
+  line-height: 2;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+  direction: ltr;
+  height: 44px;
+  font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+  border-color: rgb(104, 145, 162);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+}
+
+/*************************FORMS************************/
+
+/*************************MESSAGES************************/
+
+.message-box {
+  cursor: pointer;
+  position: fixed;
+  bottom: 16px;
+  background-color: rgba(25, 25, 25, 0.71);
+  padding-top: 12px;
+  padding-right: 25px;
+  border-radius: 22px;
+  padding-bottom: 12px;
+  color: #fff;
+  padding-left: 25px;
+  left: 35px;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.message-fade {
+  opacity: 1 !important;
+}
+
+/*************************MESSAGES************************/
+
+/*************************CONTAINERS************************/
+
+.container-articles {
+  display: inline-block;
+  padding-top: 25px;
+  width: 100%;
+}
+
+/*************************CONTAINERS************************/
+
+/*************************TEXT************************/
+
+.title-article {
+  padding: 7px;
+  font-size: 25px;
+  font-weight: lighter;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.panel-heading {
+  font-size: 20px;
+}
+
+/*************************TEXT************************/
+
+/******************************************************/
+/*****************CSS NEWS PROJECT ********************/
+/******************************************************/
