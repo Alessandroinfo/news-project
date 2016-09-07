@@ -1,4 +1,5 @@
 var express = require('express');
+var multer = require('multer');
 var router = express.Router();
 var ArticlesModel = require("../../../db/ArticlesModel");  //Importo il modello della collection
 
@@ -12,12 +13,40 @@ var ArticlesModel = require("../../../db/ArticlesModel");  //Importo il modello 
 
 
 //  -------------------------        ARTICOLI       -------------------------
-//API per la creazione di un articolo
-router.post('/createArticle', function (req, res) {
 
+// Configurazione del multer per il caricamento su server delle immagini
+var updatedFile;
+
+// Storage memorizza il dato che arriva come file con il nome del file originale e nel percorso indicato
+var storage = multer.diskStorage({
+    // Proprieta di multer che dato il file è possibile modificare il percorso dal file che verrà salvato
+    destination: function (req, file, callback) {
+        callback(null, '../client/app/imagesUploaded/');
+    },
+    // Proprieta di multer che dato il file è possibile modificare il nome dal file che verrà salvato
+    filename: function (req, file, callback) {
+        callback(null, file.originalname);
+    }
+});
+var upload = multer({storage: storage}).single('file');
+
+//API per la creazione di un articolo
+router.post('/createArticle', upload, function (req, res) {
+
+    // Elimino l'id per non far generare errore di update
+    delete req.body._id;
+    var article = req.body;
+    if (req.file) {
+        article.imageUrl = req.file.originalname;
+    } else {
+        article.imageUrl = "";
+    }
+
+    // Aggiungo la data all'articolo
+    article.date = new Date();
 
     var articolo = new ArticlesModel(  //Creo il modello popolandolo con i dati
-        req.body
+        article
     );
 
     articolo.save(function (err, article) {  //Salvo il modello nel db
@@ -35,7 +64,6 @@ router.post('/createArticle', function (req, res) {
             res.json({success: true, payloads: arrayModel, article: article});
         });
     });
-
 
 });
 
@@ -72,27 +100,45 @@ router.post('/deleteArticles', function (req, res) {
 
 
 //API per la modifica dell'articolo
-router.post('/editArticle', function (req, res) {
+router.post('/editArticle', upload, function (req, res) {
 
-    ArticlesModel.findById(req.body._id, function (error, articleUpdated) {
-        // Gestisco l'errore col middleware di Express
-        if (error) return next(error);
+    ArticlesModel.findById(req.body._id, function (error, articleToUpdate) {
+        // Gestisco l'errore
+        if (error) {
+            return res.json({success: false, payloads: error});
+        }
 
         // Errore in caso non viene trovato
-        if (!articleUpdated) {
-            return res.status(404).json({
+        if (!articleToUpdate) {
+            return res.json({
                 message: 'Articolo con id ' + req.body._id + ' non è stato trovato.'
             });
         }
 
-        // Elimino l'id per non far generare errore di update
-        delete req.body._id;
-        delete req.body.selected;
+        // Controlli per le modifiche
+        var article = {};
+        if (articleToUpdate.title != req.body.title) {
+            article.title = req.body.title;
+        }
+        if (articleToUpdate.body != req.body.body) {
+            article.body = req.body.body;
+        }
+        if (articleToUpdate.category != req.body.category) {
+            article.category = req.body.category;
+        }
+        // Aggiorno con la nuova immagine
+        if (req.file) {
+            article.imageUrl = req.file.originalname;
+        }
+
         // Update del modello
-        articleUpdated.update(req.body, function (error, articleUpdated) {
+        articleToUpdate.update(article, function (error, articleUpdated) {
             if (error) return next(error);
 
-            res.json(articleUpdated);
+            ArticlesModel.findById(req.body._id, function (error, editedArticle) {
+                res.json({success: 1, payloads: editedArticle});
+            });
+
         });
     });
 

@@ -17,12 +17,23 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="vertical-pad break-center">
-                        <div ng-if="admin.editing" class="back">
 
+                        <label for="categoryOrder">Categoria:</label>
+                        <select ng-model="admin.filterCategory"
+                                ng-options="category as category.name for category in admin.category"
+                                class="form-control" id="categoryOrder">
+                            <option value="">TUTTI</option>
+                        </select>
+
+                        <button ng-click="admin.orderForData()" type="button" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+                        </button>
+
+
+                        <div ng-if="admin.editing" class="back">
                             <button ng-click="admin.backToArticles()" type="button" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -36,7 +47,7 @@
                         <button ng-if="!admin.editing" ng-click="admin.editArticle()" type="button"
                                 ng-class="{'disabled': !admin.editIsDisables}" class="btn btn-primary">Modifica
                         </button>
-                        <button ng-if="admin.editing" ng-click="admin.saveArticle()" type="button"
+                        <button ng-if="admin.editing" ng-click="admin.uploadArticle()" type="button"
                                 class="btn btn-success">Salva
                         </button>
                         <button ng-click="admin.deleteArticles()" type="button" class="btn btn-danger">Elimina</button>
@@ -57,16 +68,21 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="row">
 
-                <div ng-repeat="article in admin.articles" class="col-lg-2 col-md-2 col-sm-2">
+                <!-- Repeat per tutti gli articoli presenti filtrati per categoria, la stringa dentro name confronta le proprietà di article, ordinando per la proprieta date di articles (date crescente, -date descrescente)-->
+                <div ng-repeat="article in admin.articles | filter: admin.filterCategory.name | orderBy: admin.ByDate"
+                     class="col-lg-2 col-md-2 col-sm-2">
                     <div ng-click="admin.toggleArticle(article._id)" class="card-small card-container-small card-touch">
                         <div class="card-image">
-                            <img src="../../app/resources/img/avatar_2x.png" alt="{{article.imageUrl}}"/>
+                            <img ng-if="article.imageUrl" ng-src="../../app/imagesUploaded/{{article.imageUrl}}"
+                                 alt="{{article.imageUrl}}"/>
+                            <img ng-if="!article.imageUrl" src="../../app/resources/img/avatar_2x.png"
+                                 alt="{{article.imageUrl}}"/>
 
                             <div class="tag-category">{{article.category}}</div>
                         </div>
 
                         <div class="title-article">{{article.title}}</div>
-
+                        <div class="date-article">{{article.date | date : "dd-MM-y" }}</div>
                         <div ng-if="article.selected" class="card-check"></div>
                     </div>
                 </div>
@@ -87,20 +103,47 @@
                         <div ng-if="!admin.create" class="panel-heading">Modifica articolo</div>
                         <div ng-if="admin.create" class="panel-heading">Aggiungi articolo</div>
                         <div class="panel-body">
+                            <form enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="title">Titolo:</label>
+                                    <input ng-model="admin.articleOnEditing.title" type="text" class="form-control"
+                                           id="title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Categoria:</label>
+                                    <select ng-model="admin.selectedCategory"
+                                            ng-options="category as category.name for category in admin.category"
+                                            class="form-control" id="category">
+                                    </select>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="title">Titolo:</label>
-                                <input ng-model="admin.articleOnEditing.title" type="text" class="form-control"
-                                       id="title">
-                            </div>
-                            <div class="form-group">
-                                <label for="category">Categoria:</label>
-                                <select class="form-control" id="category">
-                                    <option ng-repeat="category in admin.category" ng-value="category.name">
-                                        {{category.name}}
-                                    </option>
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="category">Immagine pricipale:</label>
+
+                                    <div class="main-image">
+                                        <img ng-if="admin.articleOnEditing.imageUrl"
+                                             ng-src="../../app/imagesUploaded/{{admin.articleOnEditing.imageUrl}}"
+                                             alt="{{admin.articleOnEditing.imageUrl}}"/>
+                                        <img ng-if="!admin.articleOnEditing.imageUrl"
+                                             src="../../app/resources/img/avatar_2x.png" alt=""/>
+                                    </div>
+                                    <input class="form-control" custom-on-change="admin.selectImage" type="file"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="text">Testo articolo:</label>
+                                    <textarea ng-model="admin.articleOnEditing.body" class="form-control" rows="7"
+                                              id="text"></textarea>
+                                </div>
+
+                                <div ng-if="admin.articleOnEditing.date" class="form-group">
+                                    <label for="category">Data creazione:</label>
+
+                                    <div class="">{{admin.articleOnEditing.date | date : "dd-MM-y" }}</div>
+                                </div>
+
+
+                            </form>
                         </div>
                     </div>
                 </div>

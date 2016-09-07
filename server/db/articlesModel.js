@@ -9,7 +9,8 @@ var articleSchema = new Schema({
     title: String,
     category: String,
     body: String,
-    imageUrl: String
+    imageUrl: String,
+    date: Date
 }, {collection: 'articles'});
 
 articleSchema.index({title: 1}); // Indicizzazione campo per veloce ricerca ma più lenti gli insert

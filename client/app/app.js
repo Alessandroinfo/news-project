@@ -6,6 +6,7 @@ angular.module('newsApp', [   //Nome modulo principale applicazione
     //Dipendenze applicazione (Moduli)
     'ngRoute',
     'ui.bootstrap',
+    'directives.module',
     'newsApp.home',
     'newsApp.admin',
     'newsApp.global.service'
@@ -18,12 +19,12 @@ function config($routeProvider) {  //Funzione di configurazione dell'applicazion
 
     //routeProvider mi permette di configurare le rotte di Angular
     $routeProvider
-        .when("/admin", {
+        .when("/", {
             templateUrl: 'app/admin/admin.html', //Template html per la rotta associata
             controller: 'adminCtrl',  //Nome controller
             controllerAs: 'admin'  //Utilizzato per non utilizzare lo $scope e gestire i controller in modo mnemonico
         })
-        .when("/", {
+        .when("/kkk", {
             templateUrl: 'app/home/home.html',
             controller: 'homeCtrl',
             controllerAs: 'home'

@@ -353,7 +353,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 /*************************TEXT************************/
 
 .title-article {
-  padding: 7px;
+  padding-top: 7px;
+  padding-right: 7px;
+  padding-left: 7px;
   font-size: 25px;
   font-weight: lighter;
   overflow: hidden;
@@ -364,6 +366,15 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   font-size: 20px;
 }
 
+.date-article {
+  color: #adadad;
+  display: inline-block;
+  padding-left: 9px;
+  font-weight: lighter;
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+}
 /*************************TEXT************************/
 
 /******************************************************/
