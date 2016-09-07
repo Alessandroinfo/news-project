@@ -16,18 +16,19 @@
             <div class="sub-header">
 
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="vertical-pad break-center">
+                    <div class="vertical-pad break-center inline-width">
 
-                        <label for="categoryOrder">Categoria:</label>
-                        <select ng-model="admin.filterCategory"
-                                ng-options="category as category.name for category in admin.category"
-                                class="form-control" id="categoryOrder">
-                            <option value="">TUTTI</option>
-                        </select>
+                        <div ng-if="!admin.editing" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 order-article">
+                            <button ng-click="admin.orderForData()" type="button" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+                            </button>
 
-                        <button ng-click="admin.orderForData()" type="button" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
-                        </button>
+                            <select ng-model="admin.filterCategory"
+                                    ng-options="category as category.name for category in admin.category"
+                                    class="category-article form-control-style" id="categoryOrder">
+                                <option value="">TUTTI</option>
+                            </select>
+                        </div>
 
 
                         <div ng-if="admin.editing" class="back">

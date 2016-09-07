@@ -1,27 +1,27 @@
 category = [{
-    name: "SPORT"
+    name: "SPORTS"
 },
     {
-        name: "BUSINESS"
+        name: "AFFARI"
     },
     {
         name: "TECH"
     },
     {
-        name: "SCIENCE"
+        name: "SCIENZA"
     },
     {
-        name: "ENTERTAINMENT"
+        name: "INTRATTENIMENTO"
     },
     {
-        name: "HEALTH"
+        name: "SALUTE"
     },
     {
-        name: "TRAVEL"
+        name: "VIAGGI"
     },
     {
-        name: "WORLD"
+        name: "MONDO"
     },
     {
-        name: "POLITICS"
+        name: "POLITICA"
     }];
