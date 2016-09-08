@@ -10,23 +10,35 @@
         var vm = this;
 
         //VARIABILI
-        vm.dati;
+        vm.articles;
+        vm.filterCategory = "";
+        vm.relevant = {relevant: true};
 
         //FUNZIONI
-        vm.createArticle = createArticle;
+        vm.showArticles = showArticles;
+        vm.changeCategory = changeCategory;
 
-        function createArticle() {
 
+        // Faccio visualizzare gli articoli
+        vm.showArticles();
 
-            homeSvc.createArticle(vm.formData).success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
-                    vm.dati = data;
-                    console.log("Articoli creati:", data);
+        // Funzione per visualizzare gli articoli su home
+        function showArticles() {
+
+            homeSvc.showArticles().success(function (data) {  //Aspetto che ritorni la promise dal service per createArticle
+                    vm.articles = data.payloads;
+                    console.log("Articoli:", vm.articles);
                 })
                 .error(function (err) {
                     console.log('Error: ' + err);
                 });
 
-        }
-    };
+        };
 
+        // Funzione per il cambio di categoria
+        function changeCategory(category) {
+            vm.filterCategory = {name: category};
+        }
+
+    }
 }());

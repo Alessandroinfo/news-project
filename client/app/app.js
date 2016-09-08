@@ -19,12 +19,12 @@ function config($routeProvider) {  //Funzione di configurazione dell'applicazion
 
     //routeProvider mi permette di configurare le rotte di Angular
     $routeProvider
-        .when("/", {
+        .when("/admin", {
             templateUrl: 'app/admin/admin.html', //Template html per la rotta associata
             controller: 'adminCtrl',  //Nome controller
             controllerAs: 'admin'  //Utilizzato per non utilizzare lo $scope e gestire i controller in modo mnemonico
         })
-        .when("/kkk", {
+        .when("/", {
             templateUrl: 'app/home/home.html',
             controller: 'homeCtrl',
             controllerAs: 'home'

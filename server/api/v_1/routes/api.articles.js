@@ -42,6 +42,11 @@ router.post('/createArticle', upload, function (req, res) {
         article.imageUrl = "";
     }
 
+    // Nel caso in cui è errato il valore
+    if (req.body.relevant == "undefined") {
+        article.relevant = false;
+    }
+
     // Aggiungo la data all'articolo
     article.date = new Date();
 
@@ -125,6 +130,9 @@ router.post('/editArticle', upload, function (req, res) {
         }
         if (articleToUpdate.category != req.body.category) {
             article.category = req.body.category;
+        }
+        if (articleToUpdate.relevant != req.body.relevant) {
+            article.relevant = req.body.relevant;
         }
         // Aggiorno con la nuova immagine
         if (req.file) {

@@ -13,11 +13,11 @@
     homeSvc.$inject = ['$http'];
     function homeSvc($http) {
         var self = this;
-        self.createArticle = createArticle;
+        self.showArticles = showArticles;
 
-        // Funzione per creare gli articoli
-        function createArticle(article) {
-            return $http.post('/api/article/createArticle', article);  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
+        // Funzione per visualizzare gli articoli
+        function showArticles() {
+            return $http.get('/api/article/showArticles');  //Post torna una promessa (promise) che è asincrona, le funzioni della promise success e error (o thenin cascata) vengono scaturiti al ritorno della promise
         };
 
     };

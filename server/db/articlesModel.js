@@ -10,6 +10,7 @@ var articleSchema = new Schema({
     category: String,
     body: String,
     imageUrl: String,
+    relevant: Boolean,
     date: Date
 }, {collection: 'articles'});
 

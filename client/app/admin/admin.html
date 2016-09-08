@@ -79,7 +79,7 @@
                             <img ng-if="!article.imageUrl" src="../../app/resources/img/avatar_2x.png"
                                  alt="{{article.imageUrl}}"/>
 
-                            <div class="tag-category">{{article.category}}</div>
+                            <div class="tag-category tag-category-back-end">{{article.category}}</div>
                         </div>
 
                         <div class="title-article">{{article.title}}</div>
@@ -135,6 +135,17 @@
                                     <label for="text">Testo articolo:</label>
                                     <textarea ng-model="admin.articleOnEditing.body" class="form-control" rows="7"
                                               id="text"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="checkbox">Imposta come rilevante:</label>
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input ng-model="admin.articleOnEditing.relevant" id="checkbox"
+                                                   type="checkbox" value="">rilevante
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <div ng-if="admin.articleOnEditing.date" class="form-group">

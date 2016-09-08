@@ -56,19 +56,6 @@ it easier to serve the files by a webserver.*
 
 ### Run the Application
 
-We have preconfigured the project with a simple development web server.  The simplest way to start
-this server is:
-
 ```
-npm start
+node server.js
 ```
-
-
-
-Caro Alessandro,
-
-l'esame consiste nella realizzazione di una Web Application. Dovresti gestire sia il front-end che il back-end. Le tecnologie raccomandata sono HTML5, JQuery, Angular e un DBMS a tua scelta. Sarebbe bello inoltre usare un CSS responsive quale Twitter Bootstrap.
-
-Ciao,
-
-P

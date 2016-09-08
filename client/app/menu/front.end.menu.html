@@ -1,4 +1,23 @@
-<ul class="menu">
-    <li><a href="#!/home">home</a></li>
-    <li><a href="#!/view2">view2</a></li>
-</ul>
+<nav role="navigation" class="navbar navbar-default">
+    <!-- Logo e menu si comprimeranno per una migliore visualizzazione mobile -->
+    <div class="navbar-header navbar-header-front-end">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">☰</button>
+        <a class="navbar-brand navbar-brand-front-end">NEWS PROJECT</a>
+    </div>
+
+    <!-- Menu che verrà compresso al diminuire della risoluzione -->
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a ng-click="home.changeCategory('')">HOME</a></li>
+            <li><a ng-click="home.changeCategory('SPORTS')">SPORTS</a></li>
+            <li><a ng-click="home.changeCategory('AFFARI')">AFFARI</a></li>
+            <li><a ng-click="home.changeCategory('TECH')">TECH</a></li>
+            <li><a ng-click="home.changeCategory('SCIENZA')">SCIENZA</a></li>
+            <li><a ng-click="home.changeCategory('INTRATTENIMENTO')">INTRATTENIMENTO</a></li>
+            <li><a ng-click="home.changeCategory('SALUTE')">SALUTE</a></li>
+            <li><a ng-click="home.changeCategory('VIAGGI')">VIAGGI</a></li>
+            <li><a ng-click="home.changeCategory('MONDO')">MONDO</a></li>
+            <li><a ng-click="home.changeCategory('POLITICA')">POLITICA</a></li>
+        </ul>
+    </div>
+</nav>

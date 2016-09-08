@@ -20,6 +20,7 @@
             fd.append('title', data.title);
             fd.append('category', data.category);
             fd.append('body', data.body);
+            fd.append('relevant', data.relevant);
             // Chiamo l'API fornita come parametro e i dati del form
             return $http.post(uploadUrl, fd, {
                     transformRequest: angular.identity,
