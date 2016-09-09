@@ -618,6 +618,11 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     white-space: nowrap;
 }
 
+.article-single-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .panel-heading {
     font-size: 20px;
 }

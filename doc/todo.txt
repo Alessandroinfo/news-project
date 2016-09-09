@@ -1,8 +1,17 @@
-elenco notizie
-elenco notizie per categoria
-elenco notizie ultime notizie
-elenco notizie popolari
-salva articolo
-login admin
-torna articolo intero per id
-modifica articolo
+Tesina:
+
+
+organizzazione angular e node
+
+moduli e librerie
+
+version control
+
+package manager
+
+
+rotte express con router montate su rotte figlie
+
+progettato cosi perche non sappiamo quanto crescera un sito o app perchè cosi è piu mantenibile l'app
+
+

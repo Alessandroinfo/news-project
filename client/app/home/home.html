@@ -69,7 +69,7 @@
             <h3>Ultime notizie</h3><br>
 
             <div ng-click="home.goToArticle(article)"
-                 ng-repeat="article in home.articles | filter: home.filterCategory.name | limitTo : 10 | orderBy: '-date'"
+                 ng-repeat="article in home.articles | filter: home.filterCategory.name: true :'category' | limitTo : 10 | orderBy: '-date'"
                  class="row">
                 <div class="article-small col-sm-12">
                     <div class="article-small-container">
@@ -93,8 +93,9 @@
         <div class="center col-lg-8">
             <h3>Tutte le news</h3><br>
 
+            <!-- Filter solo un singolo campo e su singola priorità -->
             <div ng-click="home.goToArticle(article)"
-                 ng-repeat="article in home.articles | filter: home.filterCategory.name" class="row">
+                 ng-repeat="article in home.articles | filter: home.filterCategory.name: true :'category'" class="row">
 
                 <div class="row-article margin-article col-sm-12">
 
@@ -191,23 +192,13 @@
                     </div>
 
                     <div class="caption">
-                        <h1 class="text-center">{{home.selectedArticle.title}}</h1>
-
+                        <div class="article-single-title text-center">{{home.selectedArticle.title}}</div>
+                        <br><br>
                         <p class="article-body">{{home.selectedArticle.body}}</p>
 
                     </div>
                 </div>
             </div>
-
-
-            <!--            <div class="col-lg-12">{{home.selectedArticle.title}}</div>
-                        <div class="col-lg-12">
-                            <img ng-src="../../app/imagesUploaded/{{home.selectedArticle.imageUrl}}"
-                                 alt="{{home.selectedArticle.imageUrl}}"/>
-                        </div>
-                        <div class="col-lg-12">{{home.selectedArticle.body}}</div>
-                        <div class="col-lg-12">{{home.selectedArticle.category}}</div>-->
-
 
         </div>
 
@@ -226,6 +217,6 @@
 <br>
 <!-- Footer -->
 <footer class="container-fluid text-center">
-    <div>Copyright 2016</div>
+    <div>Copyright News Project 2016</div>
 </footer>
 <!-- Footer -->

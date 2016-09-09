@@ -50,6 +50,12 @@
         vm.orderForData = orderForData;
 
 
+        // Controllo per il caricamento degli articoli quando autenticato
+        if (vm.globalData.isAuthenticated) {
+            vm.showArticles();
+        }
+
+
         // Funzione per visualizzare gli articoli su admin
         function showArticles() {
 

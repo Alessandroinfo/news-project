@@ -70,7 +70,7 @@
             <div class="row">
 
                 <!-- Repeat per tutti gli articoli presenti filtrati per categoria, la stringa dentro name confronta le proprietà di article, ordinando per la proprieta date di articles (date crescente, -date descrescente)-->
-                <div ng-repeat="article in admin.articles | filter: admin.filterCategory.name | orderBy: admin.ByDate"
+                <div ng-repeat="article in admin.articles | filter: admin.filterCategory.name: true :'category' | orderBy: admin.ByDate"
                      class="col-lg-2 col-md-2 col-sm-2">
                     <div ng-click="admin.toggleArticle(article._id)" class="card-small card-container-small card-touch">
                         <div class="card-image">

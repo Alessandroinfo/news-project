@@ -23,7 +23,6 @@
         vm.goToArticle = goToArticle;
         vm.backToArticles = backToArticles;
 
-
         // Faccio visualizzare gli articoli
         vm.showArticles();
 
@@ -43,7 +42,12 @@
         // Funzione per il cambio di categoria
         function changeCategory(category) {
             vm.isOneArticle = false;
-            vm.filterCategory = {name: category};
+            if (category == '') {
+                vm.filterCategory = '';
+            } else {
+                vm.filterCategory = {name: category};
+            }
+
         }
 
 
