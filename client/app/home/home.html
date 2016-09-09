@@ -1,7 +1,7 @@
 <div ng-include="'app/menu/front.end.menu.html'"></div>
 
 <!-- Contenitore front-end-->
-<div class="home">
+<div ng-if="!home.isOneArticle" class="home">
 
     <!-- Carosello -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -15,7 +15,7 @@
         <!-- Contenitore slides -->
         <div class="carousel-inner" role="listbox">
 
-            <div class="item active">
+            <div ng-click="home.goToArticle(home.articles[0])" class="item active">
                 <img ng-src="../../app/imagesUploaded/{{home.articles[0].imageUrl}}"
                      alt="{{home.articles[0].imageUrl}}"/>
 
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="item">
+            <div ng-click="home.goToArticle(home.articles[1])" class="item">
                 <img ng-src="../../app/imagesUploaded/{{home.articles[1].imageUrl}}"
                      alt="{{home.articles[1].imageUrl}}"/>
 
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="item">
+            <div ng-click="home.goToArticle(home.articles[2])" class="item">
                 <img ng-src="../../app/imagesUploaded/{{home.articles[2].imageUrl}}"
                      alt="{{home.articles[2].imageUrl}}"/>
 
@@ -68,7 +68,8 @@
         <div class="text-center col-lg-2">
             <h3>Ultime notizie</h3><br>
 
-            <div ng-repeat="article in home.articles | filter: home.filterCategory.name | limitTo : 10 | orderBy: '-date'"
+            <div ng-click="home.goToArticle(article)"
+                 ng-repeat="article in home.articles | filter: home.filterCategory.name | limitTo : 10 | orderBy: '-date'"
                  class="row">
                 <div class="article-small col-sm-12">
                     <div class="article-small-container">
@@ -92,9 +93,10 @@
         <div class="center col-lg-8">
             <h3>Tutte le news</h3><br>
 
-            <div ng-repeat="article in home.articles | filter: home.filterCategory.name" class="row">
+            <div ng-click="home.goToArticle(article)"
+                 ng-repeat="article in home.articles | filter: home.filterCategory.name" class="row">
 
-                <div class="margin-article col-sm-12">
+                <div class="row-article margin-article col-sm-12">
 
                     <div class="row">
                         <div class="article-center-size col-sm-4">
@@ -135,7 +137,8 @@
         <div class="text-center col-lg-2">
             <h3>Notizie rilevanti</h3><br>
 
-            <div ng-repeat="article in home.articles | filter: home.relevant | limitTo : 10" class="row">
+            <div ng-click="home.goToArticle(article)"
+                 ng-repeat="article in home.articles | filter: home.relevant | limitTo : 10" class="row">
                 <div class="article-small col-sm-12">
                     <div class="article-small-container">
                         <img ng-src="../../app/imagesUploaded/{{article.imageUrl}}"
@@ -155,20 +158,74 @@
 
 
     </div>
-    <br>
-    <br>
     <!-- Contenitore centrale notizie -->
-
-    <!-- Footer -->
-    <footer class="container-fluid text-center">
-        <div>Copyright 2016</div>
-    </footer>
-    <!-- Footer -->
 
 </div>
 
-<!--
-<button type="submit" class="btn btn-primary btn-lg" ng-click="home.createArticle()">Add</button>
-<p>This is the partial for view 1. {{home.ciao}}</p>
-<p>{{home.dati}}</p>
--->
+<!-- Singolo articolo -->
+<div ng-if="home.isOneArticle" class="article">
+
+    <div class="single-article container-fluid bg-3">
+
+
+        <!-- Pulsante indietro -->
+        <div class="col-lg-1">
+            <div class="back">
+                <button ng-click="home.backToArticles()" type="button" class="btn btn-primary btn-home">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Articolo selezionato -->
+        <div class="col-lg-10">
+
+
+            <div class="col-xs-12 col-lg-12">
+                <div class="thumbnail">
+                    <div class="image-single-article">
+                        <img ng-src="../../app/imagesUploaded/{{home.selectedArticle.imageUrl}}"
+                             alt="{{home.selectedArticle.imageUrl}}"/>
+
+                        <div class="tag-category tag-category-small">{{home.selectedArticle.category}}</div>
+                    </div>
+
+                    <div class="caption">
+                        <h1 class="text-center">{{home.selectedArticle.title}}</h1>
+
+                        <p class="article-body">{{home.selectedArticle.body}}</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--            <div class="col-lg-12">{{home.selectedArticle.title}}</div>
+                        <div class="col-lg-12">
+                            <img ng-src="../../app/imagesUploaded/{{home.selectedArticle.imageUrl}}"
+                                 alt="{{home.selectedArticle.imageUrl}}"/>
+                        </div>
+                        <div class="col-lg-12">{{home.selectedArticle.body}}</div>
+                        <div class="col-lg-12">{{home.selectedArticle.category}}</div>-->
+
+
+        </div>
+
+
+        <div class="col-lg-1">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<br>
+<br>
+<!-- Footer -->
+<footer class="container-fluid text-center">
+    <div>Copyright 2016</div>
+</footer>
+<!-- Footer -->

@@ -45,6 +45,13 @@ a {
     cursor: pointer;
 }
 
+.nav > li:focus {
+    color: #fff;
+    background-color: #d40022;
+    font-weight: bold;
+    outline: none;
+}
+
 .sub-header {
     padding-top: 13px;
     padding-bottom: 13px;
@@ -199,6 +206,10 @@ a {
     background-color: #000;
 }
 
+.carousel .item {
+    cursor: pointer;
+}
+
 .carousel-control {
     display: none;
 }
@@ -225,7 +236,7 @@ a {
 /* Padding nel footer e colore grigio di background */
 footer {
     background-color: #f2f2f2;
-    padding: 5px;
+    padding: 25px;
 }
 
 /* Nascono il carosello per risoluzioni minori di 600px */
@@ -328,6 +339,18 @@ footer {
 
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
     outline: 0px;
+}
+
+.btn-home {
+    color: #fff;
+    background-color: #f04903;
+    border-color: #f04903;
+}
+
+.btn-home:hover, .btn-home:active, .btn-home:focus {
+    color: #fff;
+    background-color: #d40022 !important;;
+    border-color: #d40022 !important;
 }
 
 /*************************BUTTONS************************/
@@ -472,7 +495,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 @media (max-width: 768px) {
     .navbar-brand-front-end {
         height: 60px;
-        font-size: 38px;
+        font-size: 35px;
         line-height: 57px;
         width: auto;
         padding-left: 7px;
@@ -499,6 +522,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 .article-small {
     margin: 0 0 10px;
+    cursor: pointer;
 }
 
 .article-small-container {
@@ -539,6 +563,44 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 .article-center-size {
 
+}
+
+.row-article {
+    cursor: pointer;
+}
+
+.single-article {
+    padding-top: 20px;
+}
+
+.back {
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 14px;
+}
+
+.image-single-article img {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+}
+
+.image-single-article {
+    position: relative;
+}
+
+.image-single-article .tag-category {
+    font-size: 25px;
+    height: auto !important;
+}
+
+.article-body {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.thumbnail {
+    min-height: 705px;
 }
 
 /*************************CONTAINERS************************/
@@ -593,8 +655,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     font-size: 35px;
     line-height: 36px;
 }
-
-
 
 /*************************TEXT************************/
 

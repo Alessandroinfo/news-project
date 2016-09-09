@@ -11,12 +11,17 @@
 
         //VARIABILI
         vm.articles;
+        vm.category = category
         vm.filterCategory = "";
         vm.relevant = {relevant: true};
+        vm.isOneArticle = false;
+        vm.selectedArticle = {};
 
         //FUNZIONI
         vm.showArticles = showArticles;
         vm.changeCategory = changeCategory;
+        vm.goToArticle = goToArticle;
+        vm.backToArticles = backToArticles;
 
 
         // Faccio visualizzare gli articoli
@@ -37,8 +42,21 @@
 
         // Funzione per il cambio di categoria
         function changeCategory(category) {
+            vm.isOneArticle = false;
             vm.filterCategory = {name: category};
         }
 
+
+        // Funzione per aprire l'articolo selezionato
+        function goToArticle(article) {
+            vm.isOneArticle = true;
+            vm.selectedArticle = article;
+        }
+
+        // Funzione per tornare indietro
+        function backToArticles() {
+            vm.isOneArticle = false;
+            vm.selectedArticle = {};
+        }
     }
 }());
