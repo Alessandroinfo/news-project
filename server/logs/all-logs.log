@@ -423,3 +423,10 @@
 {"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-09T14:46:33.285Z"}
 {"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-09T15:07:21.089Z"}
 {"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-09T15:07:21.253Z"}
+{"level":"error","message":"DATABASE: Connection failed!","timestamp":"2016-09-12T18:37:05.413Z"}
+{"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-12T18:38:26.304Z"}
+{"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-12T18:38:26.537Z"}
+{"level":"error","message":"DATABASE: Connection failed!","timestamp":"2016-09-12T22:36:34.298Z"}
+{"level":"error","message":"DATABASE: Connection failed!","timestamp":"2016-09-12T22:49:30.094Z"}
+{"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-12T22:50:52.795Z"}
+{"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-12T22:50:53.069Z"}
