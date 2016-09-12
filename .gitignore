@@ -158,3 +158,5 @@ server/node_modules/ws/
 server/node_modules/xmlbuilder/
 server/node_modules/xmlhttprequest-ssl/
 server/node_modules/yeast/
+/server/logs/
+doc/~WRL0003.tmp

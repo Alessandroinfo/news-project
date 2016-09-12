@@ -421,3 +421,5 @@
 {"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-09T14:25:54.922Z"}
 {"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-09T14:46:33.074Z"}
 {"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-09T14:46:33.285Z"}
+{"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-09T15:07:21.089Z"}
+{"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-09T15:07:21.253Z"}
