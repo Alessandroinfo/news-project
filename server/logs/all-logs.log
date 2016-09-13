@@ -430,5 +430,3 @@
 {"level":"error","message":"DATABASE: Connection failed!","timestamp":"2016-09-12T22:49:30.094Z"}
 {"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-12T22:50:52.795Z"}
 {"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-12T22:50:53.069Z"}
-{"level":"info","message":"DATABASE: Connection success!","timestamp":"2016-09-12T23:21:36.155Z"}
-{"level":"info","message":"Applicaton listen on port 3030","timestamp":"2016-09-12T23:21:36.319Z"}
