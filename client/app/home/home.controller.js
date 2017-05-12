@@ -11,7 +11,7 @@
 
         //VARIABILI
         vm.articles;
-        vm.category = category
+        vm.category = category;
         vm.filterCategory = "";
         vm.relevant = {relevant: true};
         vm.isOneArticle = false;
@@ -49,7 +49,6 @@
             }
 
         }
-
 
         // Funzione per aprire l'articolo selezionato
         function goToArticle(article) {

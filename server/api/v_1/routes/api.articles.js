@@ -21,7 +21,7 @@ var updatedFile;
 var storage = multer.diskStorage({
     // Proprieta di multer che dato il file è possibile modificare il percorso dal file che verrà salvato
     destination: function (req, file, callback) {
-        callback(null, '../client/app/imagesUploaded/');
+        callback(null, './client/app/imagesUploaded');
     },
     // Proprieta di multer che dato il file è possibile modificare il nome dal file che verrà salvato
     filename: function (req, file, callback) {
