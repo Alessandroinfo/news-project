@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: false}));  //Setto body parser
 
 var config = require('./config').config();  //Richiedo la funzione config del file config/index.js
 var msg = require('./config').messages();   //Richiedo la funzione messages del file config/index.js
-var logger = require('./config/Logger');    //Richiedo il modulo config/logger.js
+var logger = require('./config/logger');    //Richiedo il modulo config/logger.js
 
 //************************************************************************************************
 
