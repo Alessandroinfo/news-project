@@ -17,10 +17,6 @@ var logger = require('./config/logger');    //Richiedo il modulo config/logger.j
 
 //************************************************************************************************
 
-/*app.use("/ciao", function (req, res) {
- res.send("ciao");
- });*/
-
 // CONNECTION TO DB
 mongoose.connect('mongodb://' + config.MONGO_URI + ':' + config.MONGO_PORT + '/' + config.MONGO_DB);   //Stabilisce i parametri di connessione a Mongo
 
