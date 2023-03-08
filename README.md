@@ -1,61 +1,84 @@
-# NewsProject
+📰 NewsProject
+==============
 
+NewsProject is a web application that allows users to read and share news articles on a variety of topics. This project
+was created as a university project for the MEAN stack with Angular 1.
 
-## Getting Started
+🚀 Getting Started
+------------------
 
-To get you started you can simply clone the NewsProject repository and install the dependencies:
+To get started with the project, follow these steps:
 
 ### Prerequisites
 
-You need git to clone the NewsProject repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
+Before running the application, you will need to have the following installed on your machine:
 
-We also use a number of node.js tools to initialize and test NewsProject. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
+- Node.js
+- MongoDB
 
-### Clone NewsProject
+### Installation
 
-Clone the NewsProject repository using [git][git]:
+1. Clone the repository: `git clone https://github.com/Alessandroinfo/NewsProject.git`
+2. Navigate to the project directory: `cd NewsProject`
+3. Install dependencies for the server side: `npm install`
+4. Navigate to the client directory: `cd client`
+5. Install dependencies for the client side: `bower install`
+6. Return to the project directory: `cd ..`
+7. Edit the `config/env.json` file with the details of your running MongoDB instance, like this:
 
+```json
+{
+  "dev": {
+    "MONGO_URI": "your-mongodb-uri",
+    "MONGO_PORT": "your-mongodb-port",
+    "MONGO_DB": "news_project_db",
+    "REDIRECT_ROUTES": {
+      "home": "/#/",
+      "admin": "/#/admin"
+    }
+  },
+  "prod": {
+    "MONGO_URI": "your-mongodb-uri",
+    "MONGO_PORT": "your-mongodb-port",
+    "MONGO_DB": "news_project_db",
+    "REDIRECT_ROUTES": {
+      "home": "/#/",
+      "admin": "/#/admin"
+    }
+  }
+}
 ```
-git clone https://github.com/angular/NewsProject.git
-cd NewsProject
-```
 
-If you just want to start a new project without the NewsProject commit history then you can do:
+Replace the `your-mongodb-uri` and `your-mongodb-port` placeholders with the appropriate details for your MongoDB
+instance.
 
-```bash
-git clone --depth=1 https://github.com/angular/NewsProject.git <your-project-name>
-```
+### Usage
 
-The `depth=1` tells git to only pull down one commit worth of historical data.
+Before running the application, make sure your MongoDB instance is running.
 
-### Install Dependencies
+1. Start the server by running `node server.js` from the `server` directory.
+2. Start the client by running `npx http-server` from the `client` directory.
+3. Open your browser and navigate to `http://localhost:8080/` to use the application.
 
-We have two kinds of dependencies in this project: tools and angular framework code.  The tools help
-us manage and test the application.
+Note that the server and client must be running simultaneously for the application to function properly.
 
-* We get the tools we depend upon via `npm`, the [node package manager][npm].
-* We get the angular code via `bower`, a [client-side code package manager][bower].
+🤖 Technologies Used
+--------------------
 
-We have preconfigured `npm` to automatically run `bower` so we can simply do:
+The following technologies were used to build the project:
 
-```
-npm install
-```
+- MongoDB
+- Express.js
+- Angular 1
+- Node.js
 
-Behind the scenes this will also call `bower install`.  You should find that you have two new
-folders in your project.
+🎓 Contributing
+---------------
 
-* `node_modules` - contains the npm packages for the tools we need
-* `app/bower_components` - contains the angular framework files
+Contributions to the project are welcome! If you'd like to contribute, please fork the repository and submit a pull
+request with your changes.
 
-*Note that the `bower_components` folder would normally be installed in the root folder but
-NewsProject changes this location through the `.bowerrc` file.  Putting it in the app folder makes
-it easier to serve the files by a webserver.*
+📝 Credits
+----------
 
-### Run the Application
-
-```
-node server.js
-```
+This project was created by Alessandroinfo as a university project for the MEAN stack with Angular 1.
