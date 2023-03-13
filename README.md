@@ -1,4 +1,4 @@
-📰 NewsProject
+📰 News Project (MEAN Boilerplate)
 ==============
 
 NewsProject is a web application that allows users to read and share news articles on a variety of topics. This project
